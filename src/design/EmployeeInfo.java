@@ -15,7 +15,7 @@ public class EmployeeInfo implements Employee{
         - OOP (Abstraction, Encapsulation, Inheritance and Polymorphism) concepts in every level possible.
         - Use all kind of keywords (super, this, static, final, etc)
         - Implement nested class below (DateConversion)
-        - Use Exception Handling
+        - Use Exception Handling (DO THIS LATER)
      */
 
     /*
@@ -49,7 +49,8 @@ public class EmployeeInfo implements Employee{
         It should return the total yearly bonus.
             Example: 10% of salary for best performance, 8% of salary for average performance and so on.
             You can set arbitrary number for performance, so you probably need to send 2 arguments.
-     *
+     * 10,000/yr 10 yrs 1K a year for performance (performance active)
+
      */
     public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
         int total = 0;
@@ -61,7 +62,8 @@ public class EmployeeInfo implements Employee{
         It should calculate Employee pension based on salary and numbers of years with the company.
         It should return the total pension amount.
             Example: Employee will receive 5% of salary as pension for every year they are with the company
-     *
+     *      after retirerement , pension (salary and num of years) ,
+
      */
     public static int calculateEmployeePension() {
         int total = 0;
@@ -107,6 +109,7 @@ public class EmployeeInfo implements Employee{
     private static class DateConversion {
 
         public DateConversion(Months months) {
+
         }
 
         public static String convertDate(String date) {
