@@ -10,10 +10,10 @@ public class PrimeNumber {
 
          Print out the prime numbers in the given range.
          */
-        prime();
+        //prime();
 
     }
-    public static void prime(){
+    public void prime(){
         for(int i = 2; i <=100;i++){
             int div_counter =0;
             //checks divisiblity of each number, if its prime it should only be divisible twice by one and itself ie counter
@@ -25,7 +25,7 @@ public class PrimeNumber {
                 }
             }
             if (div_counter ==2){
-                System.out.println(i);
+                System.out.print(i+",");
             }
 
         }

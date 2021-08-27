@@ -14,25 +14,26 @@ public class Pattern {
 
         */
 
-        pattern();
+        // pattern();
 
     }
 
-    public static void pattern() {
+    public void pattern() {
         int update = 0;
-        int n = 1000;
+        int n = 100;
         int factor = 0;
         boolean test = true;
 
-        System.out.println(n);
+        System.out.print(n + ",");
         factor++;
         while (test) {
-            System.out.println("//////////////BY DECREMENT OF " + factor);
+            //System.out.println("//////////////BY DECREMENT OF " + factor);
             for (int j = 1; j <= 10; j++) {
 
-                update = n - (j * factor);//100-0 100*1 *1*2
+                update = n - (j * factor);
+
                 if (update >= 0) {
-                    System.out.println(update);
+                    System.out.print(update + ",");
                 } else {
                     test = false;
                 }

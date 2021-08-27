@@ -9,11 +9,11 @@ public class FindMissingNumber {
 
          Write a method to find the missing number from the array.
          */
-        missing();
+       // missing();
 
     }
 
-    public static void missing(){
+    public void missing(){
         int[] array = new int[] {10, 2, 1, 4, 5, 3, 7, 8, 6};
         int n =10;
         int total=0;

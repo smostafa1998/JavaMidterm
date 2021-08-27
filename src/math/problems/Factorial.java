@@ -9,17 +9,18 @@ public class Factorial {
      */
 
     public static void main(String[] args) {
-        int num = 5;
-        System.out.println(fib(num));
+       // int num = 5;
+        //System.out.println(fac(num));
 
     }
 
-    public static int fib(int num) {
+    public int fac(int num) {
+
         if (num==0){
             return 1;
         }
         else {
-            return (num * fib(num - 1));
+            return (num * fac(num - 1));
         }
     }
 

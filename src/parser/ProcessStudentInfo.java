@@ -43,6 +43,8 @@ public class ProcessStudentInfo {
 
         //Declare a Map with List<String> into it.
         Map<String, List<Student>> list = new LinkedHashMap<String, List<Student>>();
+        Map<String, List<Student>> list2 = new LinkedHashMap<String, List<Student>>();
+
 				
         /*
         Declare 2 ArrayList, accepting Student datatype, which you will use to store students from the Selenium class
@@ -58,19 +60,37 @@ public class ProcessStudentInfo {
         seleniumStudents = xmlReader.parseData(tag, pathSelenium);
 
         // Parse Data using parseData method and then store data into QTP ArrayList.
+        qtpStudents = xmlReader.parseData(tag, pathQtp);
 
         // Add Selenium ArrayList data into map.
+        //System.out.println(seleniumStudents.get(0));
+        for (Student str : seleniumStudents) {
+            list.put(str.id, new ArrayList<Student>());
+            list.get(str.id).add(str);
+        }
+
 
         // Add Qtp ArrayList data into map.
+        for (Student str : qtpStudents) {
+            list2.put(str.id, new ArrayList<Student>());
+            list2.get(str.id).add(str);
+        }
 
         // Retrieve map data and display output for both maps.
-
-
-
         List<Student> stList = new ArrayList<>();
         for (Student st : stList) {
             System.out.println(st.getFirstName() + " " + st.getLastName() + " " + st.getScore() + " " + st.getId());
         }
+
+        System.out.println("Selenium Student List");
+        for (String s : list.keySet()) {
+            System.out.println(list.get(s).get(0).toString());
+        }
+        System.out.println("Qtp Student List");
+        for (String s : list2.keySet()) {
+            System.out.println(list2.get(s).get(0).toString());
+        }
+
 
     }
 
