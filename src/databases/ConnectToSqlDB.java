@@ -22,14 +22,32 @@ public class ConnectToSqlDB {
     public static PreparedStatement ps = null;
     public static ResultSet resultSet = null;
 
+
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+         List<User> list = readUserProfileFromSqlTable();
+        for (User user : list) {
+            System.out.println(user.getStName() + " " + user.getStID() + " " + user.getStDOB());
+        }
+    }
+
+
     public static Properties loadProperties() throws IOException {
         Properties prop = new Properties();
-        InputStream ism = new FileInputStream("src/secret.properties");
+        String path = System.getProperty("user.dir") + "/src/secret.properties";
+        InputStream ism = new FileInputStream(path);
         prop.load(ism);
         ism.close();
         return prop;
     }
 
+    /**
+     * This connects to the SQL DATABASE by loading properties and entering info about the database, use this to
+     * start the connection to the database
+     * @return
+     * @throws IOException
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static Connection connectToSqlDatabase() throws IOException, SQLException, ClassNotFoundException {
         Properties prop = loadProperties();
         String driverClass = prop.getProperty("MYSQLJDBC.driver");
@@ -37,11 +55,22 @@ public class ConnectToSqlDB {
         String userName = prop.getProperty("MYSQLJDBC.userName");
         String password = prop.getProperty("MYSQLJDBC.password");
         Class.forName(driverClass);
-        connect = DriverManager.getConnection(url, userName, password);
-        System.out.println("Database is connected");
+
+        try{
+            connect = DriverManager.getConnection(url, userName, password);
+            System.out.println("Database is connected");
+
+        }catch(Exception e){
+            System.out.println("COULD NOT CONNECT TO DB");
+            e.printStackTrace();
+        }
         return connect;
     }
 
+    /**
+     * This reads the data from the SQL table, use this for User CLass ONLY USER CLASS
+     * @return
+     */
     public static List<User> readUserProfileFromSqlTable(){
         List<User> list = new ArrayList<>();
         User user = null;
@@ -70,13 +99,13 @@ public class ConnectToSqlDB {
         return list;
     }
 
-    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-        List<User> list = readUserProfileFromSqlTable();
-        for (User user : list) {
-            System.out.println(user.getStName() + " " + user.getStID() + " " + user.getStDOB());
-        }
-    }
-
+    /**
+     * This lets u read from the data base since it executes query
+     * @param tableName
+     * @param columnName
+     * @return
+     * @throws Exception
+     */
     public List<String> readDataBase(String tableName, String columnName) throws Exception {
         List<String> data = new ArrayList<String>();
 
@@ -86,6 +115,7 @@ public class ConnectToSqlDB {
             resultSet = statement.executeQuery("select * from " + tableName);
             data = getResultSetData(resultSet, columnName);
         } catch (ClassNotFoundException e) {
+            System.out.println("CANT FIND");
             throw e;
         } finally {
             close();
@@ -118,6 +148,13 @@ public class ConnectToSqlDB {
         return dataList;
     }
 
+    /**
+     * lets u load arrays into mySQL table, but table needs to be created.
+     * THIS IS FOR ALGORITHM FILES
+     * @param ArrayData
+     * @param tableName
+     * @param columnName
+     */
     public void insertDataFromArrayToSqlTable(int[] ArrayData, String tableName, String columnName) {
         try {
             connectToSqlDatabase();
@@ -141,6 +178,12 @@ public class ConnectToSqlDB {
         }
     }
 
+    /**
+     * LETS U ADD STRING DATA TO A COLUMN
+     * @param ArrayData
+     * @param tableName
+     * @param columnName
+     */
     public void insertDataFromStringToSqlTable(String ArrayData, String tableName, String columnName) {
         try {
             connectToSqlDatabase();
@@ -156,6 +199,13 @@ public class ConnectToSqlDB {
         }
     }
 
+    /**
+     * LETS U EXECEUTE A QUERY FROM JAVA
+     * @param passQuery
+     * @param dataColumn
+     * @return
+     * @throws Exception
+     */
     public List<String> directDatabaseQueryExecute(String passQuery, String dataColumn) throws Exception {
         List<String> data = new ArrayList<String>();
 
@@ -172,6 +222,12 @@ public class ConnectToSqlDB {
         return data;
     }
 
+    /**
+     * inserts array list into SQL this is for parser.students!!!
+     * @param list
+     * @param tableName
+     * @param columnName
+     */
     public void insertDataFromArrayListToSqlTable(List<Student> list, String tableName, String columnName) {
         try {
             connectToSqlDatabase();
@@ -195,13 +251,25 @@ public class ConnectToSqlDB {
         }
     }
 
-    public void insertProfileToSqlTable(String tableName, String columnName1, String columnName2) {
+    /**
+     * THis inserts into three columns used to load in students
+     * @param tableName
+     * @param columnName1
+     * @param columnName2
+     * @param columnName3
+     */
+    public void insertProfileToSqlTable(String tableName, String columnName1, String columnName2, String columnName3, User user) {
         try {
             connectToSqlDatabase();
-            ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName1 + "," + columnName2 + " ) VALUES(?,?)");
-            ps.setString(1, "Ankita Sing");
-            ps.setInt(2, 3590);
+            ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName1
+                    + "," + columnName2 + "," + columnName3 +" ) VALUES(?,?,?)");
+            ps.setString(1, user.getStID());
+            ps.setString(2, user.getStName());
+            ps.setString(3, user.getStDOB());
+
+            // ps.setInt(2, 3590);
             ps.executeUpdate();
+            System.out.println("DONE");
 
         } catch (IOException e) {
             e.printStackTrace();

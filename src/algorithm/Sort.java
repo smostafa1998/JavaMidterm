@@ -7,7 +7,6 @@ public class Sort {
      * Please implement all the sorting algorithm. Feel free to add helper methods.
      * Store all the sorted data into one of the databases.
      */
-
     public static void printSortedArray(int[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.println(array[i]);

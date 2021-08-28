@@ -2,6 +2,8 @@ package algorithm;
 
 import org.testng.Assert;
 
+import java.util.Arrays;
+
 public class UnitTestSorting {
 
     /*
@@ -15,7 +17,7 @@ public class UnitTestSorting {
         Sort sort = new Sort();
 
         // Pass the unsorted array to selectionSort() method from Sort class
-        sort.selectionSort(unSortedArray);
+        System.out.println(Arrays.toString(sort.selectionSort(unSortedArray)));
 
         // Verify if the unsorted array is sorted by the selectionSort() method
         try {

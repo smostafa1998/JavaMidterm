@@ -21,17 +21,19 @@ public class Numbers {
 
         ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
-        int[] num = new int[1000000];
+        int[] num = new int[100000];
         storeRandomNumbers(num);
 
         // Selection Sort
         Sort algo = new Sort();
+
         algo.selectionSort(num);
         long selectionSortExecutionTime = algo.executionTime;
         System.out.println("Total Execution Time of " + num.length + " numbers in Selection Sort took: "
                 + selectionSortExecutionTime + " milliseconds");
 
         connectToSqlDB.insertDataFromArrayToSqlTable(num, "selection_sort", "SortingNumbers");
+        System.out.println("HELLO");
         List<String> numbers = connectToSqlDB.readDataBase("selection_sort", "SortingNumbers");
         printValue(numbers);
 
@@ -44,10 +46,53 @@ public class Numbers {
         System.out.println("Total Execution Time of " + num.length + " numbers in Insertion Sort took: "
                 + insertionSortExecutionTime + " milliseconds");
 
+        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "insertion_sort", "SortingNumbers");
+        //List<String> numbers1 = connectToSqlDB.readDataBase("insertion_sort", "SortingNumbers");
+        //printValue(numbers1);
+
         /*
          By following the same convention we used for Selection Sort, continue to do the same for all remaining sorting
             algorithms
          */
+        algo.bubbleSort(num);
+        long bubbleSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in BubbleSort took: "
+                + insertionSortExecutionTime + " milliseconds");
+
+
+        algo.mergeSort(num);
+        long mergeSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in MergeSort took: "
+                + insertionSortExecutionTime + " milliseconds");
+
+
+
+        algo.quickSort(num);
+        long quickSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in QuickSort took: "
+                + insertionSortExecutionTime + " milliseconds");
+
+
+        algo.heapSort(num);
+        long heapSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in HeapSort took: "
+                + insertionSortExecutionTime + " milliseconds");
+
+
+
+        algo.bucketSort(num);
+        long bucketSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in BucketSort took: "
+                + insertionSortExecutionTime + " milliseconds");
+
+
+
+        algo.shellSort(num);
+        long shellSortExecutionTime = algo.executionTime;
+        System.out.println("Total Execution Time of " + num.length + " numbers in Shell Sort took: "
+                + insertionSortExecutionTime + " milliseconds");
+
+
 
 
         /*
@@ -55,9 +100,6 @@ public class Numbers {
          */
 
     }
-
-
-
 
     /*
     HELPER METHODS
