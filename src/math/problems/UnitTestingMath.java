@@ -14,6 +14,7 @@ public class UnitTestingMath {
 
         System.out.println("FACTORIAL PROBLEM 1 SOLVED");
         System.out.println(problem.fac(5));
+        problem.factorialIteration(5);
         System.out.println("FIBBONACHI PROBLEM 2 SOLVED");
         System.out.println(problem2.fib());
         System.out.println("FIND LOWEST DIFFERENCE PROBLEM 3 SOLVED");

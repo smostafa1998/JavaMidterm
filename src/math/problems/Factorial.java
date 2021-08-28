@@ -24,4 +24,12 @@ public class Factorial {
         }
     }
 
+    public void factorialIteration(int x){
+
+        for (int i = x; i > 0; i--){
+            x += (i*(i-1));
+        }
+        System.out.println(x);
+    }
+
 }
