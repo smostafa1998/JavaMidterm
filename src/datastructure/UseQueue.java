@@ -1,15 +1,13 @@
 package datastructure;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Queue;
+import java.util.*;
 
 
 public class UseQueue implements Queue{
 
     public static void main(String[] args) {
-        ArrayList<String> customers = new ArrayList<>();
+        Queue <String> animals = new LinkedList<>();
+
 
         /*
          * Demonstrate how to use Queue that includes add, peek, remove & poll elements.
@@ -17,11 +15,45 @@ public class UseQueue implements Queue{
          *
          * Store and retrieve data from/to a database table.
          */
-        customers.add("testing");
-        customers.add("tes");
-        customers.add("testi");
-        System.out.println(customers.size());
-        System.out.println(customers.isEmpty());
+
+        System.out.println("LIST OF ENDANGERED ANIMALS BASED ON PRIORITY");
+
+        animals.add("African forest elephant");
+        animals.add("Amur Leopard");
+        animals.add("Black Rhino");
+        animals.add("Bornean Orangutan");
+        animals.add("Cross River Gorilla");
+        animals.add("Blue Whale");
+        animals.add("Green Turtle");
+        animals.add("Indian Elephant");
+        animals.add("Red Panda");
+        animals.add("Sea Turtle");
+        animals.add("Black Spider Monkey");
+
+        System.out.println(animals.toString());
+        System.out.println();
+        System.out.println("Number of Animals on this list: "+animals.size());
+        System.out.println("HIGHEST LIKELY TO BE ENDANGERED IS: "+animals.element());
+        System.out.println("Removing this ....");
+        animals.remove();
+        System.out.println("UPDATED LIST: "+animals.toString());
+        System.out.println("Now showing the most likely but gonna delete: "+animals.poll());
+        System.out.println("UPDATED LIST: "+animals.toString());
+        System.out.println("Now highest likely is..."+ animals.peek());
+
+        Iterator<String> itr = animals.iterator();
+
+        System.out.println();
+        System.out.println("USING A FOR LOOP");
+        for(String a:animals){
+            System.out.println(a);
+        }
+
+        System.out.println();
+        System.out.println("USING A WHILE LOOP");
+        while(itr.hasNext()){
+            System.out.println(itr.next());
+        }
 
 
     }
@@ -114,6 +146,7 @@ public class UseQueue implements Queue{
 
     @Override
     public Object peek() {
+
         return null;
     }
 }

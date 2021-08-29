@@ -1,5 +1,7 @@
 package datastructure;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Collections;
 
 public class UseArrayList {
 
@@ -19,11 +21,22 @@ public class UseArrayList {
         testing.add("Sabreen");
         System.out.println("After all these add methods"+testing.toString());
 
-
         peek(testing);
 
         testing.remove(2);
         System.out.println("Arraylist after removal"+testing.toString());
+
+        Iterator<String> testing1 = testing.iterator();
+
+        System.out.println("WHILE LOOP");
+        while (testing1.hasNext()){
+            System.out.println(testing1.next());
+        }
+        System.out.println();
+        System.out.println("FOR EACH LOOP");
+        for(String test : testing){
+            System.out.println(test);
+        }
 
     }
 
