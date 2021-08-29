@@ -11,7 +11,6 @@ public class Factorial {
     public static void main(String[] args) {
        // int num = 5;
         //System.out.println(fac(num));
-
     }
 
     public int fac(int num) {
@@ -26,10 +25,10 @@ public class Factorial {
 
     public void factorialIteration(int x){
 
-        for (int i = x; i > 0; i--){
-            x += (i*(i-1));
+        for (int i = x-1; i > 0; i--){
+            x = i*x;
         }
-        System.out.println(x);
+        System.out.println("With Iteration: "+x);
     }
 
 }

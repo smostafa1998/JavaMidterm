@@ -1,5 +1,6 @@
 package design;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class EmployeeInfo implements Employee{
@@ -15,15 +16,26 @@ public class EmployeeInfo implements Employee{
         - OOP (Abstraction, Encapsulation, Inheritance and Polymorphism) concepts in every level possible.
         - Use all kind of keywords (super, this, static, final, etc)
         - Implement nested class below (DateConversion)
-        - Use Exception Handling (DO THIS LATER)
+        - Use Exception Handling
      */
 
     /*
      * Make sure to declare and use static, non-static & final fields
      */
+
+
     static String companyName;
     int employeeId;
     String employeeName;
+    String performance;
+    String department;
+    final static String COMPANYNAME_A = "APPLE";
+    final static String COMPANYNAME_B = "GOOGLE";
+    final static String COMPANYNAME_C = "INSTAGRAM";
+    final static String COMPANYNAME_D = "FACEBOOK";
+    final static String COMPANYNAME_E = "GOOGLE";
+
+
 
     /*
      You must implement the logic for below 2 methods and
@@ -34,6 +46,10 @@ public class EmployeeInfo implements Employee{
     /*
      You must have/use multiple constructors
      */
+    public EmployeeInfo(){
+        super();
+    }
+
     public EmployeeInfo(int employeeId) {
         this.employeeId=employeeId;
     }
@@ -43,6 +59,26 @@ public class EmployeeInfo implements Employee{
         this.employeeId=employeeId;
     }
 
+    public EmployeeInfo(String name, int employeeId, performance_rates performance, String companyName) {
+        this.employeeName=name;
+        this.employeeId=employeeId;
+        this.performance=performance.toString();
+        this.department=null;
+        EmployeeInfo.companyName = companyName;
+    }
+
+    public static void main(String[] args) {
+        Employee employee = new EmployeeInfo("Sabreen",1,performance_rates.A,COMPANYNAME_A);
+        employee.assignDepartment(depart_titles.FINANCE);
+        System.out.println(employee.calculateSalary());
+        employee.benefitLayout();
+        System.out.println(calculateEmployeeBonus(3,employee.performance(),employee));
+        System.out.println(employee.toString());
+        System.out.println(employee.employeeId());
+        calculateEmployeePension(employee);
+        //employee.department();
+        //employee.employeeName();
+    }
     /*
      You need to implement the logic of this method as such:
         It should calculate Employee bonus based on salary and performance.
@@ -52,8 +88,30 @@ public class EmployeeInfo implements Employee{
      * 10,000/yr 10 yrs 1K a year for performance (performance active)
 
      */
-    public static int calculateEmployeeBonus(int numberOfYearsWithCompany) {
-        int total = 0;
+
+    public static double calculateEmployeeBonus(int numberOfYearsWithCompany,String performance, Employee e) {
+        double total = 0;
+
+        if (performance.equals(performance_rates.A.toString())){
+            System.out.println("GOOD JOB BIG BONUS FOR U");
+            total = (e.calculateSalary()*0.1)*numberOfYearsWithCompany;
+
+        }else if (performance.equals(performance_rates.B.toString())){
+            System.out.println("NICE JOB HERE U GO A BONUS");
+            total = (e.calculateSalary()*0.08)*numberOfYearsWithCompany;
+
+        }else if(performance.equals(performance_rates.C.toString())){
+            System.out.println("STARTING TO GET THE FLOW HERES A BONUS");
+            total = (e.calculateSalary()*0.06)*numberOfYearsWithCompany;
+
+        }else if(performance.equals(performance_rates.D.toString())){
+            System.out.println("NICE WORK JUST DO A BIT BETTER PLS, HERES BONUS");
+            total = (e.calculateSalary()*0.04)*numberOfYearsWithCompany;
+
+        }else{
+            System.out.println("YIKES MAYBE WORK HARDER NOT LONGER");
+        }
+
         return total;
     }
 
@@ -65,20 +123,23 @@ public class EmployeeInfo implements Employee{
      *      after retirerement , pension (salary and num of years) ,
 
      */
-    public static int calculateEmployeePension() {
-        int total = 0;
+    public static double calculateEmployeePension(Employee employee) {
+        double pension = 0;
         Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter start date in format (example: May,2015): ");
-        String joiningDate = sc.nextLine();
-        System.out.println("Please enter today's date in format (example: August,2017): ");
-        String todaysDate = sc.nextLine();
-        String convertedJoiningDate = DateConversion.convertDate(joiningDate);
-        String convertedTodaysDate = DateConversion.convertDate(todaysDate);
-
-        // Figure out how to extract the number of years the employee has been with the company, using the above 2 dates
-        // Calculate pension
-
-        return total;
+        try {
+            System.out.println("Please enter start date in format (example: May,2015): ");
+            String joiningDate = sc.nextLine();
+            System.out.println("Please enter today's date in format (example: August,2017): ");
+            String todaysDate = sc.nextLine();
+            String convertedJoiningDate = DateConversion.convertDate(joiningDate);
+            String convertedTodaysDate = DateConversion.convertDate(todaysDate);
+            int numberOfYearsWithCompany = Integer.parseInt(convertedTodaysDate.substring(convertedTodaysDate.length()-4))-Integer.parseInt(convertedJoiningDate.substring(convertedJoiningDate.length()-4));
+            pension = (double) numberOfYearsWithCompany * (employee.calculateSalary()*0.05);
+            System.out.println("Here is ur pension"+pension);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return pension;
     }
 
     @Override
@@ -92,18 +153,80 @@ public class EmployeeInfo implements Employee{
     }
 
     @Override
-    public void assignDepartment() {
-
+    public String performance() {
+        return performance;
     }
 
     @Override
-    public int calculateSalary() {
-        return 0;
+    public String department() {
+        return department;
+    }
+
+    @Override
+    public void assignDepartment(depart_titles depart) {
+        this.department = depart.toString();
+    }
+
+    public static String getCompanyName() {
+        return companyName;
+    }
+
+    public static void setCompanyName(String companyName) {
+        EmployeeInfo.companyName = companyName;
+    }
+
+    @Override
+    public double calculateSalary() {
+        double salary=0;
+
+       if(this.department.equals(depart_titles.FINANCE.toString())){
+           salary = 50000;
+
+       }else if(this.department.equals(depart_titles.ENGINEERING.toString())){
+           salary = 100000;
+
+       }else if(this.department.equals(depart_titles.BUSINESS.toString())){
+           salary = 80000;
+
+       }else if(this.department.equals(depart_titles.SALES.toString())){
+           salary = 30000;
+
+       }else{
+           System.out.println("ERROR NO SALARY FOR U");
+           return 0;
+       }
+        return salary;
     }
 
     @Override
     public void benefitLayout() {
 
+        System.out.println("WELCOME TO THE COMPANY HERE ARE UR BENEFITS!!!");
+
+
+        if(this.department.equals(depart_titles.FINANCE.toString())){
+
+        }else if(this.department.equals(depart_titles.ENGINEERING.toString())){
+
+        }else if(this.department.equals(depart_titles.BUSINESS.toString())){
+
+        }else if(this.department.equals(depart_titles.SALES.toString())){
+
+        }else{
+
+        }
+
+
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeInfo{" +
+                "employeeId=" + employeeId +
+                ", employeeName='" + employeeName + '\'' +
+                ", performance='" + performance + '\'' +
+                ", department='" + department + '\'' +
+                '}';
     }
 
     private static class DateConversion {
