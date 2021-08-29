@@ -9,14 +9,19 @@ public class Anagram {
     */
 
     public static void main(String[] args) {
-        String testing = "MARY";
+        String testing1 = "MARY";
         String testing2 = "ARMY";
+        anagram(testing1, testing2);
+    }
+
+
+    public static void anagram(String testing1, String testing2){
         int count = 0;
 
-        if (testing.length() == testing2.length()) {
-            for (int i = 0; i < testing.length(); i++) {
+        if (testing1.length() == testing2.length()) {
+            for (int i = 0; i < testing1.length(); i++) {
                 for (int j = 0; j < testing2.length(); j++) {
-                    String a = Character.toString(testing.charAt(i));
+                    String a = Character.toString(testing1.charAt(i));
                     String b = Character.toString(testing2.charAt(j));
                     if (a.equals(b)) {
                         count++;
@@ -28,7 +33,7 @@ public class Anagram {
         }
 
 
-        if (count == testing.length()) {
+        if (count == testing1.length()) {
             System.out.println("THIS IS A ANAGRAM");
         } else {
             System.out.println("THIS IS NOT A ANAGRAM");

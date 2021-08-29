@@ -10,23 +10,25 @@ public class PrimeNumber {
 
          Print out the prime numbers in the given range.
          */
-        prime();
+        int start = 2;
+        int end = 1000000;
+        prime(start, end);
 
 
     }
-    public static void prime(){
-        for(int i = 2; i <=100;i++){
-            int div_counter =0;
-            //checks divisiblity of each number, if its prime it should only be divisible twice by one and itself ie counter
-            for (int j =1;j<=i ;j++){
 
-                if (i%j==0){
-                    //System.out.println(i);
+    public static void prime(int start, int end) {
+        for (int i = start; i <= end; i++) {
+            int div_counter = 0;
+            //checks divisiblity of each number, if its prime it should only be divisible twice by one and itself ie counter
+            for (int j = 1; j <= i; j++) {
+
+                if (i % j == 0) {
                     div_counter++;
                 }
             }
-            if (div_counter ==2){
-                System.out.print(i+",");
+            if (div_counter == 2) {
+                System.out.print(i + ",");
             }
 
         }

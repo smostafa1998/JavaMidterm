@@ -11,6 +11,11 @@ public class Palindrome {
          */
 
         String testing = "MADAM";
+        palindrome(testing);
+
+    }
+
+    public static void palindrome (String testing){
         String testing1="";
         for (int i=testing.length()-1;i>=0;i--){
             testing1 += testing.charAt(i);

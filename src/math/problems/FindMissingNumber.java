@@ -9,13 +9,13 @@ public class FindMissingNumber {
 
          Write a method to find the missing number from the array.
          */
-        missing();
+        int[] array = new int[] {10, 2, 1, 4, 5, 3, 7, 8, 6};
+        missing(array);
 
     }
 
-    public static void missing(){
-        int[] array = new int[] {10, 2, 1, 4, 5, 3, 7, 8, 6};
-        int n =10;
+    public static void missing(int[] array){
+        int n =array.length+1;
         int total=0;
         int totalArr=0;
         for(int i=0;i<array.length;i++){

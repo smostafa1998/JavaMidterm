@@ -12,6 +12,10 @@ public class DuplicateWord {
          */
 
         String st = "Java is a programming Language. Java is also an Island of Indonesia. Java is widely used language";
+        duplicate(st);
+    }
+
+    public static void duplicate(String st){
         int occurrences = 0;
         double sum = 0;
         double average = 0;
@@ -40,5 +44,6 @@ public class DuplicateWord {
         average = sum / str.length;
         System.out.println("avg is "+average);
     }
+
 
 }

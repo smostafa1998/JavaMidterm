@@ -7,14 +7,13 @@ public class FindLowestDifference {
          Write a method to return the the lowest difference between these two arrays
             HINT: The lowest difference between these arrays is 1
         */
-
-       lowDIFF();
+        int[] array1 = {30, 12, 5, 9, 2, 20, 33, 1};
+        int[] array2 = {18, 25, 41, 47, 17, 36, 14, 19};
+        lowDIFF(array1, array2);
 
     }
 
-    public static void lowDIFF(){
-        int[] array1 = {30, 12, 5, 9, 2, 20, 33, 1};
-        int[] array2 = {18, 25, 41, 47, 17, 36, 14, 19};
+    public static void lowDIFF(int[] array1, int[] array2){
 
         int lowMIN= Integer.MAX_VALUE;
         int difference=0;
@@ -30,7 +29,4 @@ public class FindLowestDifference {
         System.out.println(lowMIN);
 
     }
-
-    ///Users/sabreenmostafa/IdeaProjects/JavaMidterm-main/out
-
 }

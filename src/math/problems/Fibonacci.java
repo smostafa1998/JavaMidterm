@@ -9,16 +9,17 @@ public class Fibonacci {
      */
 
     public static void main(String[] args) {
-        System.out.println("FIBONACCI "+fib());
+        int num = 40;
+        System.out.println("FIBONACCI "+fib(num));
     }
 
-    public static int fib() {
+    public static int fib(int num) {
         int temp1 = 0;
         int temp2=0;
         int currentNum=0;
         int total =0;
 
-        for(int counter=0;counter<40;counter++){
+        for(int counter=0;counter<num;counter++){
 
             if (currentNum<=1){
                 temp1 = currentNum; //1
