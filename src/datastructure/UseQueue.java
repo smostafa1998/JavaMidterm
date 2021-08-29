@@ -3,10 +3,10 @@ package datastructure;
 import java.util.*;
 
 
-public class UseQueue implements Queue{
+public class UseQueue implements Queue {
 
     public static void main(String[] args) {
-        Queue <String> animals = new LinkedList<>();
+        Queue<String> animals = new LinkedList<>();
 
 
         /*
@@ -32,35 +32,37 @@ public class UseQueue implements Queue{
 
         System.out.println(animals.toString());
         System.out.println();
-        System.out.println("Number of Animals on this list: "+animals.size());
-        System.out.println("HIGHEST LIKELY TO BE ENDANGERED IS: "+animals.element());
+        System.out.println("Number of Animals on this list: " + animals.size());
+        System.out.println("HIGHEST LIKELY TO BE ENDANGERED IS: " + animals.element());
         System.out.println("Removing this ....");
         animals.remove();
-        System.out.println("UPDATED LIST: "+animals.toString());
-        System.out.println("Now showing the most likely but gonna delete: "+animals.poll());
-        System.out.println("UPDATED LIST: "+animals.toString());
-        System.out.println("Now highest likely is..."+ animals.peek());
+        System.out.println("UPDATED LIST: " + animals.toString());
+        System.out.println("Now showing the most likely but gonna delete: " + animals.poll());
+        System.out.println("UPDATED LIST: " + animals.toString());
+        System.out.println("Now highest likely is..." + animals.peek());
 
         Iterator<String> itr = animals.iterator();
 
         System.out.println();
         System.out.println("USING A FOR LOOP");
-        for(String a:animals){
+        for (String a : animals) {
             System.out.println(a);
         }
 
         System.out.println();
         System.out.println("USING A WHILE LOOP");
-        while(itr.hasNext()){
+        while (itr.hasNext()) {
             System.out.println(itr.next());
         }
+
+        //Store this in SQL
 
 
     }
 
     @Override
     public int size() {
-        return size();
+        return 0;
     }
 
     @Override
