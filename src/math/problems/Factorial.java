@@ -9,21 +9,22 @@ public class Factorial {
      */
 
     public static void main(String[] args) {
-       // int num = 5;
-        //System.out.println(fac(num));
+        System.out.println("With Recursion: "+facRecursion(5));
+        factorialIteration(5);
+
     }
 
-    public int fac(int num) {
+    public static int facRecursion(int num) {
 
         if (num==0){
             return 1;
         }
         else {
-            return (num * fac(num - 1));
+            return (num * facRecursion(num - 1));
         }
     }
 
-    public void factorialIteration(int x){
+    public static void factorialIteration(int x){
 
         for (int i = x-1; i > 0; i--){
             x = i*x;

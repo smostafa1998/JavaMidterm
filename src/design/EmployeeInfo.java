@@ -3,7 +3,7 @@ package design;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class EmployeeInfo implements Employee{
+public class EmployeeInfo implements Employee {
 
 
     /*
@@ -46,38 +46,32 @@ public class EmployeeInfo implements Employee{
     /*
      You must have/use multiple constructors
      */
-    public EmployeeInfo(){
+    public EmployeeInfo() {
         super();
     }
 
     public EmployeeInfo(int employeeId) {
-        this.employeeId=employeeId;
+        this.employeeId = employeeId;
     }
 
     public EmployeeInfo(String name, int employeeId) {
-        this.employeeName=name;
-        this.employeeId=employeeId;
+        this.employeeName = name;
+        this.employeeId = employeeId;
+    }
+
+    public EmployeeInfo(String name, int employeeId, performance_rates performance) {
+        this.employeeName = name;
+        this.employeeId = employeeId;
+        this.performance = performance.toString();
+        this.department = null;
     }
 
     public EmployeeInfo(String name, int employeeId, performance_rates performance, String companyName) {
-        this.employeeName=name;
-        this.employeeId=employeeId;
-        this.performance=performance.toString();
-        this.department=null;
+        this.employeeName = name;
+        this.employeeId = employeeId;
+        this.performance = performance.toString();
+        this.department = null;
         EmployeeInfo.companyName = companyName;
-    }
-
-    public static void main(String[] args) {
-        Employee employee = new EmployeeInfo("Sabreen",1,performance_rates.A,COMPANYNAME_A);
-        employee.assignDepartment(depart_titles.FINANCE);
-        System.out.println(employee.calculateSalary());
-        employee.benefitLayout();
-        System.out.println(calculateEmployeeBonus(3,employee.performance(),employee));
-        System.out.println(employee.toString());
-        System.out.println(employee.employeeId());
-        calculateEmployeePension(employee);
-        //employee.department();
-        //employee.employeeName();
     }
     /*
      You need to implement the logic of this method as such:
@@ -89,27 +83,27 @@ public class EmployeeInfo implements Employee{
 
      */
 
-    public static double calculateEmployeeBonus(int numberOfYearsWithCompany,String performance, Employee e) {
+    public static double calculateEmployeeBonus(int numberOfYearsWithCompany, String performance, Employee e) {
         double total = 0;
 
-        if (performance.equals(performance_rates.A.toString())){
-            System.out.println("GOOD JOB BIG BONUS FOR U");
-            total = (e.calculateSalary()*0.1)*numberOfYearsWithCompany;
+        if (performance.equals(performance_rates.A.toString())) {
+            System.out.print("GOOD JOB BIG BONUS FOR U: $");
+            total = (e.calculateSalary() * 0.1) * numberOfYearsWithCompany;
 
-        }else if (performance.equals(performance_rates.B.toString())){
-            System.out.println("NICE JOB HERE U GO A BONUS");
-            total = (e.calculateSalary()*0.08)*numberOfYearsWithCompany;
+        } else if (performance.equals(performance_rates.B.toString())) {
+            System.out.print("NICE JOB HERE U GO A BONUS: $");
+            total = (e.calculateSalary() * 0.08) * numberOfYearsWithCompany;
 
-        }else if(performance.equals(performance_rates.C.toString())){
-            System.out.println("STARTING TO GET THE FLOW HERES A BONUS");
-            total = (e.calculateSalary()*0.06)*numberOfYearsWithCompany;
+        } else if (performance.equals(performance_rates.C.toString())) {
+            System.out.print("STARTING TO GET THE FLOW HERES A BONUS: $");
+            total = (e.calculateSalary() * 0.06) * numberOfYearsWithCompany;
 
-        }else if(performance.equals(performance_rates.D.toString())){
-            System.out.println("NICE WORK JUST DO A BIT BETTER PLS, HERES BONUS");
-            total = (e.calculateSalary()*0.04)*numberOfYearsWithCompany;
+        } else if (performance.equals(performance_rates.D.toString())) {
+            System.out.print("NICE WORK JUST DO A BIT BETTER PLS, HERES BONUS: $");
+            total = (e.calculateSalary() * 0.04) * numberOfYearsWithCompany;
 
-        }else{
-            System.out.println("YIKES MAYBE WORK HARDER NOT LONGER");
+        } else {
+            System.out.print("YIKES MAYBE WORK HARDER NOT LONGER");
         }
 
         return total;
@@ -133,10 +127,10 @@ public class EmployeeInfo implements Employee{
             String todaysDate = sc.nextLine();
             String convertedJoiningDate = DateConversion.convertDate(joiningDate);
             String convertedTodaysDate = DateConversion.convertDate(todaysDate);
-            int numberOfYearsWithCompany = Integer.parseInt(convertedTodaysDate.substring(convertedTodaysDate.length()-4))-Integer.parseInt(convertedJoiningDate.substring(convertedJoiningDate.length()-4));
-            pension = (double) numberOfYearsWithCompany * (employee.calculateSalary()*0.05);
-            System.out.println("Here is ur pension"+pension);
-        }catch(Exception e){
+            int numberOfYearsWithCompany = Integer.parseInt(convertedTodaysDate.substring(convertedTodaysDate.length() - 4)) - Integer.parseInt(convertedJoiningDate.substring(convertedJoiningDate.length() - 4));
+            pension = (double) numberOfYearsWithCompany * (employee.calculateSalary() * 0.05);
+            System.out.println("Here is ur pension" + pension);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return pension;
@@ -177,45 +171,40 @@ public class EmployeeInfo implements Employee{
 
     @Override
     public double calculateSalary() {
-        double salary=0;
+        double salary = 0;
 
-       if(this.department.equals(depart_titles.FINANCE.toString())){
-           salary = 50000;
+        if (this.department.equals(depart_titles.FINANCE.toString())) {
+            salary = 50000;
 
-       }else if(this.department.equals(depart_titles.ENGINEERING.toString())){
-           salary = 100000;
+        } else if (this.department.equals(depart_titles.ENGINEERING.toString())) {
+            salary = 100000;
 
-       }else if(this.department.equals(depart_titles.BUSINESS.toString())){
-           salary = 80000;
+        } else if (this.department.equals(depart_titles.BUSINESS.toString())) {
+            salary = 80000;
 
-       }else if(this.department.equals(depart_titles.SALES.toString())){
-           salary = 30000;
+        } else if (this.department.equals(depart_titles.SALES.toString())) {
+            salary = 30000;
 
-       }else{
-           System.out.println("ERROR NO SALARY FOR U");
-           return 0;
-       }
+        } else {
+            System.out.println("ERROR NO SALARY FOR U");
+            return 0;
+        }
         return salary;
     }
 
     @Override
     public void benefitLayout() {
 
-        System.out.println("WELCOME TO THE COMPANY HERE ARE UR BENEFITS!!!");
-
-
-        if(this.department.equals(depart_titles.FINANCE.toString())){
-
-        }else if(this.department.equals(depart_titles.ENGINEERING.toString())){
-
-        }else if(this.department.equals(depart_titles.BUSINESS.toString())){
-
-        }else if(this.department.equals(depart_titles.SALES.toString())){
-
-        }else{
-
-        }
-
+        System.out.println("============================================================");
+        System.out.println("------WELCOME TO THE COMPANY HERE ARE UR BENEFITS!!!--------");
+        System.out.println("============================================================");
+        System.out.println("* bonus pay up to 10% of your salary *");
+        System.out.println("* After retirement,pension pay offered,receive 5% of salary\n " +
+                "as pension for every year they were with the company *");
+        System.out.println("* vacation pay * holiday pay * Paid time off *");
+        System.out.println("* maternity leave with pay *");
+        System.out.println("* 401K * health insurance *");
+        System.out.println("============================================================");
 
     }
 

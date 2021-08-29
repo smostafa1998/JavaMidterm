@@ -9,12 +9,10 @@ public class Fibonacci {
      */
 
     public static void main(String[] args) {
-        //System.out.println("HELLO");
-        //System.out.println(fib());
-
+        System.out.println("FIBONACCI "+fib());
     }
 
-    public int fib() {
+    public static int fib() {
         int temp1 = 0;
         int temp2=0;
         int currentNum=0;

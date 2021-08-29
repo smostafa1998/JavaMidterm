@@ -12,22 +12,23 @@ public class UnitTestingMath {
         Pattern problem6 = new Pattern();
         PrimeNumber problem7 = new PrimeNumber();
 
+
         System.out.println("FACTORIAL PROBLEM 1 SOLVED");
-        System.out.println("With Recursion: "+problem.fac(5));
-        problem.factorialIteration(5);
+        System.out.println("With Recursion: "+ Factorial.facRecursion(5));
+        Factorial.factorialIteration(5);
         System.out.println("FIBBONACHI PROBLEM 2 SOLVED");
-        System.out.println(problem2.fib());
+        System.out.println(Fibonacci.fib());
         System.out.println("FIND LOWEST DIFFERENCE PROBLEM 3 SOLVED");
-        problem3.lowDIFF();
+        FindLowestDifference.lowDIFF();
         System.out.println("FIND MISSING NUMBER PROBLEM 4 SOLVED");
-        problem4.missing();
+        FindMissingNumber.missing();
         System.out.println("FIND LOWEST NUMBER PROBLEM 5 SOLVED");
-        problem5.lowNum();
+        LowestNumber.lowNum();
         System.out.println("FIND PATTERN PROBLEM 6 SOLVED");
-        problem6.pattern();
+        Pattern.pattern();
         System.out.println();
         System.out.println("FIND PRIME NUMBER PROBLEM 7 SOLVED");
-        problem7.prime();
+        PrimeNumber.prime();
 
 
 

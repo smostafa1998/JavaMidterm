@@ -14,11 +14,11 @@ public class Pattern {
 
         */
 
-        // pattern();
+         pattern();
 
     }
 
-    public void pattern() {
+    public static void pattern() {
         int update = 0;
         int n = 100;
         int factor = 0;
