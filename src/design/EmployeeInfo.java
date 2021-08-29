@@ -33,7 +33,7 @@ public class EmployeeInfo implements Employee {
     final static String COMPANYNAME_B = "GOOGLE";
     final static String COMPANYNAME_C = "INSTAGRAM";
     final static String COMPANYNAME_D = "FACEBOOK";
-    final static String COMPANYNAME_E = "GOOGLE";
+    final static String COMPANYNAME_E = "FORTUNE";
 
 
 
@@ -129,7 +129,7 @@ public class EmployeeInfo implements Employee {
             String convertedTodaysDate = DateConversion.convertDate(todaysDate);
             int numberOfYearsWithCompany = Integer.parseInt(convertedTodaysDate.substring(convertedTodaysDate.length() - 4)) - Integer.parseInt(convertedJoiningDate.substring(convertedJoiningDate.length() - 4));
             pension = (double) numberOfYearsWithCompany * (employee.calculateSalary() * 0.05);
-            System.out.println("Here is ur pension" + pension);
+            System.out.println("Here is ur pension: $" + pension);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -195,16 +195,16 @@ public class EmployeeInfo implements Employee {
     @Override
     public void benefitLayout() {
 
-        System.out.println("============================================================");
-        System.out.println("------WELCOME TO THE COMPANY HERE ARE UR BENEFITS!!!--------");
-        System.out.println("============================================================");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("++++++WELCOME TO THE COMPANY HERE ARE UR BENEFITS!!!++++++++");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("* bonus pay up to 10% of your salary *");
         System.out.println("* After retirement,pension pay offered,receive 5% of salary\n " +
                 "as pension for every year they were with the company *");
         System.out.println("* vacation pay * holiday pay * Paid time off *");
         System.out.println("* maternity leave with pay *");
         System.out.println("* 401K * health insurance *");
-        System.out.println("============================================================");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
     }
 
