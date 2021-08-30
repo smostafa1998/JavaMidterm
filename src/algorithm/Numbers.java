@@ -21,7 +21,7 @@ public class Numbers {
 
         ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
-        int[] num = new int[100000];
+        int[] num = new int[1000];
         storeRandomNumbers(num);
 
         // Selection Sort
@@ -46,9 +46,12 @@ public class Numbers {
         System.out.println("Total Execution Time of " + num.length + " numbers in Insertion Sort took: "
                 + insertionSortExecutionTime + " milliseconds");
 
-        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "insertion_sort", "SortingNumbers");
-        //List<String> numbers1 = connectToSqlDB.readDataBase("insertion_sort", "SortingNumbers");
-        //printValue(numbers1);
+        connectToSqlDB.insertDataFromArrayToSqlTable(num, "insertion_sort", "SortingNumbers");
+        List<String> numbers1 = connectToSqlDB.readDataBase("insertion_sort", "SortingNumbers");
+        printValue(numbers1);
+
+        n = num.length;
+        randomize(num, n);
 
         /*
          By following the same convention we used for Selection Sort, continue to do the same for all remaining sorting
@@ -59,6 +62,12 @@ public class Numbers {
         System.out.println("Total Execution Time of " + num.length + " numbers in BubbleSort took: "
                 + insertionSortExecutionTime + " milliseconds");
 
+        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "bubble_sort", "SortingNumbers");
+        //List<String> numbers1 = connectToSqlDB.readDataBase("bubble_sort", "SortingNumbers");
+        //printValue(numbers1);
+
+        n = num.length;
+        randomize(num, n);
 
         algo.mergeSort(num);
         long mergeSortExecutionTime = algo.executionTime;
@@ -66,26 +75,48 @@ public class Numbers {
                 + insertionSortExecutionTime + " milliseconds");
 
 
+        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "merge_sort", "SortingNumbers");
+        //List<String> numbers1 = connectToSqlDB.readDataBase("merge_sort", "SortingNumbers");
+        //printValue(numbers1);
+
+        n = num.length;
+        randomize(num, n);
 
         algo.quickSort(num);
         long quickSortExecutionTime = algo.executionTime;
         System.out.println("Total Execution Time of " + num.length + " numbers in QuickSort took: "
                 + insertionSortExecutionTime + " milliseconds");
 
+        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "quick_sort", "SortingNumbers");
+        //List<String> numbers1 = connectToSqlDB.readDataBase("quick_sort", "SortingNumbers");
+        //printValue(numbers1);
+
+        n = num.length;
+        randomize(num, n);
 
         algo.heapSort(num);
         long heapSortExecutionTime = algo.executionTime;
         System.out.println("Total Execution Time of " + num.length + " numbers in HeapSort took: "
                 + insertionSortExecutionTime + " milliseconds");
 
+        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "heap_sort", "SortingNumbers");
+        //List<String> numbers1 = connectToSqlDB.readDataBase("heap_sort", "SortingNumbers");
+        //printValue(numbers1);
 
+        n = num.length;
+        randomize(num, n);
 
         algo.bucketSort(num);
         long bucketSortExecutionTime = algo.executionTime;
         System.out.println("Total Execution Time of " + num.length + " numbers in BucketSort took: "
                 + insertionSortExecutionTime + " milliseconds");
 
+        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "bucket_sort", "SortingNumbers");
+        //List<String> numbers1 = connectToSqlDB.readDataBase("bucket_sort", "SortingNumbers");
+        //printValue(numbers1);
 
+        n = num.length;
+        randomize(num, n);
 
         algo.shellSort(num);
         long shellSortExecutionTime = algo.executionTime;
@@ -93,7 +124,9 @@ public class Numbers {
                 + insertionSortExecutionTime + " milliseconds");
 
 
-
+        //connectToSqlDB.insertDataFromArrayToSqlTable(num, "shell_sort", "SortingNumbers");
+        //List<String> numbers1 = connectToSqlDB.readDataBase("shell_sort", "SortingNumbers");
+        //printValue(numbers1);
 
         /*
         Can you come to conclusion about which sorting algorithm is most efficient, given the size of the data set?
