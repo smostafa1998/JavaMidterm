@@ -10,7 +10,7 @@ public class Factorial {
 
     public static void main(String[] args) {
         System.out.println("With Recursion: "+facRecursion(5));
-        factorialIteration(5);
+        System.out.println("WIth Iteration: "+factorialIteration(5));
 
     }
 
@@ -24,12 +24,12 @@ public class Factorial {
         }
     }
 
-    public static void factorialIteration(int x){
+    public static int factorialIteration(int x){
 
         for (int i = x-1; i > 0; i--){
             x = i*x;
         }
-        System.out.println("With Iteration: "+x);
+        return x;
     }
 
 }

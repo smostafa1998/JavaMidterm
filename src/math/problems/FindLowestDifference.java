@@ -9,11 +9,11 @@ public class FindLowestDifference {
         */
         int[] array1 = {30, 12, 5, 9, 2, 20, 33, 1};
         int[] array2 = {18, 25, 41, 47, 17, 36, 14, 19};
-        lowDIFF(array1, array2);
+        System.out.println("lowest diff is: "+lowDIFF(array1, array2));
 
     }
 
-    public static void lowDIFF(int[] array1, int[] array2){
+    public static int lowDIFF(int[] array1, int[] array2){
 
         int lowMIN= Integer.MAX_VALUE;
         int difference=0;
@@ -26,7 +26,8 @@ public class FindLowestDifference {
                 }
             }
         }
-        System.out.println(lowMIN);
+       // System.out.println(lowMIN);
 
+        return lowMIN;
     }
 }

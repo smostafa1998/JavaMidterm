@@ -36,6 +36,9 @@ public class UnitTestSorting {
         } catch (Exception ex) {
             ex.getMessage();
         }
+
+        //System.out.println(Arrays.toString(mergeSort(sorting)));
+        //System.out.println(Arrays.toString(quickSort(sorting,0,sorting.length-1)));
         // Implement Unit test for rest of the sorting algorithms below
 
     }

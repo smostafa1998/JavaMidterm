@@ -10,11 +10,11 @@ public class FindMissingNumber {
          Write a method to find the missing number from the array.
          */
         int[] array = new int[] {10, 2, 1, 4, 5, 3, 7, 8, 6};
-        missing(array);
+        System.out.println("missing num is "+missing(array));
 
     }
 
-    public static void missing(int[] array){
+    public static int missing(int[] array){
         int n =array.length+1;
         int total=0;
         int totalArr=0;
@@ -25,6 +25,7 @@ public class FindMissingNumber {
             total += i;
         }
         int finalNum = total -totalArr;
-        System.out.println("Missing num is... "+finalNum);
+
+        return finalNum;
     }
 }
