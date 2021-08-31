@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 
+import design.EmployeeInfo;
 import parser.Student;
 
 public class ConnectToSqlDB {
@@ -213,20 +214,22 @@ public class ConnectToSqlDB {
 
     /**
      * LETS U ADD STRING DATA TO A COLUMN
-     * @param ArrayData
+     * @param
      * @param tableName
-     * @param columnName
+     * @param
      */
-    public void insertDataFromStringToSqlTable(String ArrayData, String tableName, String columnName) {
+    public void insertDataFromStringToSqlTable(String tableName, String columnName1, String columnName2, EmployeeInfo employee) {
         try {
             connectToSqlDatabase();
             ps = connect.prepareStatement("DROP TABLE IF EXISTS `" + tableName + "`;");
             ps.executeUpdate();
             ps = connect.prepareStatement(
-                    "CREATE TABLE " + tableName + " (`ID` int NOT NULL AUTO_INCREMENT,`SortingLETTERS` varchar(255) DEFAULT NULL,  PRIMARY KEY (`ID`) );");
+                    "CREATE TABLE " + tableName + " (`ID` int NOT NULL AUTO_INCREMENT,`employee_name` varchar(255) DEFAULT NULL,`performance` varchar(255) DEFAULT NULL,  PRIMARY KEY (`ID`) );");
             ps.executeUpdate();
-            ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName + " ) VALUES(?)");
-            ps.setString(1, ArrayData);
+            ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName1
+                    + "," + columnName2 +" ) VALUES(?,?)");
+            ps.setString(1, employee.employeeName());
+            ps.setString(2, employee.performance());
             ps.executeUpdate();
         } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -257,31 +260,6 @@ public class ConnectToSqlDB {
     }
 
     /**
-     * inserts array list into SQL this is for parser.students!!!
-     * @param list
-     * @param tableName
-     * @param columnName
-     */
-    public void insertDataFromArrayListToSqlTable(List<Student> list, String tableName, String columnName) {
-        try {
-            connectToSqlDatabase();
-            ps = connect.prepareStatement("DROP TABLE IF EXISTS `" + tableName + "`;");
-            ps.executeUpdate();
-            ps = connect.prepareStatement(
-                    "CREATE TABLE `" + tableName + "` (`ID` int(11) NOT NULL AUTO_INCREMENT,`SortingNumbers` bigint(20) DEFAULT NULL,  PRIMARY KEY (`ID`) );");
-            ps.executeUpdate();
-            for (Student st : list) {
-                ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName + " ) VALUES(?)");
-                ps.setObject(1, st);
-                ps.executeUpdate();
-            }
-
-        } catch (IOException | SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * THis inserts into three columns used to load in students
      * @param tableName
      * @param columnName1
@@ -298,6 +276,21 @@ public class ConnectToSqlDB {
             ps.setString(3, user.getStDOB());
 
             // ps.setInt(2, 3590);
+            ps.executeUpdate();
+            System.out.println("DONE");
+
+        } catch (IOException | SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void insertEMPLOYEEProfileToSqlTable(String tableName, String columnName1, String columnName2, EmployeeInfo employee) {
+        try {
+            connectToSqlDatabase();
+            ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName1
+                    + "," + columnName2 +" ) VALUES(?,?)");
+            ps.setString(1, employee.employeeName());
+            ps.setString(2, employee.performance());
             ps.executeUpdate();
             System.out.println("DONE");
 
@@ -325,7 +318,34 @@ public class ConnectToSqlDB {
             e.printStackTrace();
         }
     }
+    /**
+     * inserts array list into SQL this is for parser.students!!!
+     * @param list
+     * @param tableName
+     * @param columnName
+     */
+    public void insertDataFromMapStudentToSqlTable(Map<String, List<Student>> list, String tableName, String columnName, String columnName2, String columnName3,String columnName4) {
+        try {
+            connectToSqlDatabase();
+            ps = connect.prepareStatement("DROP TABLE IF EXISTS `" + tableName + "`;");
+            ps.executeUpdate();
+            ps = connect.prepareStatement(
+                    "CREATE TABLE `" + tableName + "` (`ID` varchar(255) UNIQUE ,`first_name` varchar(255) DEFAULT NULL, `last_name` varchar(255) DEFAULT NULL,`score` varchar(255) DEFAULT NULL, PRIMARY KEY (`ID`) );");
+            ps.executeUpdate();
+            for (Map.Entry<String, List<Student>> st : list.entrySet()) {
+                ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName
+                        + "," + columnName2 + "," + columnName3 + "," + columnName4 +" ) VALUES(?,?,?,?)");
+                ps.setString(1, String.valueOf(st.getKey()));
+                ps.setString(2, String.valueOf(st.getValue().get(0).getFirstName()));
+                ps.setString(3, String.valueOf(st.getValue().get(0).getLastName()));
+                ps.setString(4, String.valueOf(st.getValue().get(0).getScore()));
+                ps.executeUpdate();
+            }
 
+        } catch (IOException | SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void insertDataFromMapToSqlTable(Map<String, List<String>> list, String tableName, String columnName, String columnName2) {
         try {

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import databases.ConnectToSqlDB;
 import org.xml.sax.SAXException;
 
 
@@ -35,7 +36,7 @@ public class ProcessStudentInfo {
      *
      */
 
-    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+    public static void main(String[] args) throws Exception {
         // Path of XML data to be read.
         String pathSelenium = System.getProperty("user.dir") + "/src/parser/selenium.xml";
         String pathQtp = System.getProperty("user.dir") + "/src/parser/qtp.xml";
@@ -44,8 +45,8 @@ public class ProcessStudentInfo {
         //Declare a Map with List<String> into it.
         Map<String, List<Student>> list = new LinkedHashMap<String, List<Student>>();
         Map<String, List<Student>> list2 = new LinkedHashMap<String, List<Student>>();
+        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
-				
         /*
         Declare 2 ArrayList, accepting Student datatype, which you will use to store students from the Selenium class
             into one list, and students from the QTP class into another list
@@ -88,11 +89,19 @@ public class ProcessStudentInfo {
         }
 
 
-
         System.out.println("Qtp Student List");
         for (String s : list2.keySet()) {
             System.out.println(list2.get(s).get(0).toString());
         }
+
+        connectToSqlDB.insertDataFromMapStudentToSqlTable(list,"Selenium","ID","first_name","last_name","score");
+        List<String> letters  = connectToSqlDB.readDataBase("Selenium", "first_name");
+        System.out.println(letters);
+
+        connectToSqlDB.insertDataFromMapStudentToSqlTable(list2,"QTP","ID","first_name","last_name","score");
+        List<String> letters2  = connectToSqlDB.readDataBase("QTP", "first_name");
+        System.out.println(letters2);
+
 
 
     }
