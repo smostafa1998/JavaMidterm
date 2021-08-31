@@ -1,18 +1,21 @@
 package datastructure;
+import databases.ConnectToSqlDB;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
+import java.util.List;
 
 public class UseArrayList {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         /*
          * Demonstrate how to use ArrayList that includes using the add, peek, remove & retrieve methods.
          * Use For-Each loop and While-loop with Iterator to retrieve data.
          *
          * Store and retrieve data from/to a database table.
          */
-
+        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
         ArrayList<String> testing = new ArrayList<String>();
         testing.add("hi");
         testing.add("my");
@@ -37,6 +40,13 @@ public class UseArrayList {
         for(String test : testing){
             System.out.println(test);
         }
+
+        //CONNECT TO DATABASE
+        connectToSqlDB.insertDataFromArrayListToSqlTable(testing,"array_list_testing","words");
+        List<String> letters  = connectToSqlDB.readDataBase("array_list_testing", "words");
+        System.out.println(letters);
+
+
 
     }
 

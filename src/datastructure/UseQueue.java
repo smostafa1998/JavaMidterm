@@ -1,13 +1,15 @@
 package datastructure;
 
+import databases.ConnectToSqlDB;
+
 import java.util.*;
 
 
 public class UseQueue implements Queue {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Queue<String> animals = new LinkedList<>();
-
+        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
         /*
          * Demonstrate how to use Queue that includes add, peek, remove & poll elements.
@@ -56,6 +58,9 @@ public class UseQueue implements Queue {
         }
 
         //Store this in SQL
+        connectToSqlDB.insertDataFromQueueToSqlTable(animals,"Endangered_Animals","animals");
+        List<String> letters  = connectToSqlDB.readDataBase("Endangered_Animals", "animals");
+        System.out.println(letters);
 
 
     }

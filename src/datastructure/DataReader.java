@@ -1,18 +1,20 @@
 package datastructure;
 
+import databases.ConnectToSqlDB;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 import java.util.Iterator;
 
 public class DataReader {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws Exception {
 
-        //BufferedReader bufferedReader = new BufferedReader();
         /*
          * Create an API to read the below textFile and print it to the console.
          *      HINT: Use BufferedReader class
@@ -34,6 +36,7 @@ public class DataReader {
         BufferedReader bufferedReader = null;
         LinkedList<String> storeLINK = new LinkedList<String>();
         Stack<String> storeSTACK = new Stack<>();
+        ConnectToSqlDB connectToSqlDB = new ConnectToSqlDB();
 
 
         try {
@@ -54,6 +57,7 @@ public class DataReader {
                         storeLINK.add(test[i]);
                         storeSTACK.add(test[i]);
                     }
+
 
                 }
             }
@@ -102,6 +106,10 @@ public class DataReader {
             System.out.println(itr2.next());
         }
 
+
+        connectToSqlDB.insertDataFromLinkedListToSqlTable(storeLINK,"linkLIST","SortingLETTERS");
+        List<String> letters  = connectToSqlDB.readDataBase("linkLIST", "SortingLETTERS");
+        System.out.println(letters);
 
     }
 

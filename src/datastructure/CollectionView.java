@@ -20,6 +20,7 @@ public class CollectionView {
         map.put(6, "Seattle");
         System.out.println(Collections.singletonMap(HashMap.class, map));
 
+
     }
 
 }

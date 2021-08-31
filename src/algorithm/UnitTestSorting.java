@@ -24,16 +24,18 @@ public class UnitTestSorting {
         // Pass the unsorted array to selectionSort() method from Sort class
         //System.out.println(Arrays.toString(sort.selectionSort(unSortedArray)));
         System.out.println(Arrays.toString(sort.heapSort(unSortedArray)));
+        System.out.println(Arrays.toString(sort.insertionSort(unSortedArray)));
+        System.out.println(Arrays.toString(sort.mergeSort(unSortedArray)));
+        System.out.println(Arrays.toString(sort.selectionSort(unSortedArray)));
+        System.out.println(Arrays.toString(sort.bubbleSort(unSortedArray)));
+        System.out.println(Arrays.toString(sort.quickSort(unSortedArray,0,unSortedArray.length-1)));
 
-         //Verify if the unsorted array is sorted by the selectionSort() method
+        //Verify if the unsorted array is sorted by the selectionSort() method
         try {
             Assert.assertEquals(sortedArray, unSortedArray, "ARRAY IS NOT SORTED... YET!\n***YOU GOT THIS!***");
         } catch (Exception ex) {
             ex.getMessage();
         }
-
-        //System.out.println(Arrays.toString(mergeSort(sorting)));
-        //System.out.println(Arrays.toString(quickSort(sorting,0,sorting.length-1)));
         // Implement Unit test for rest of the sorting algorithms below
 
     }
