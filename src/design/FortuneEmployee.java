@@ -47,7 +47,6 @@ public class FortuneEmployee {
         System.out.println();
 
 
-
         System.out.println("-----------------------------------EMPLOYEE C---------------------------------------");
         Employee employeeC = new EmployeeInfo("Betty", 3, Employee.performance_rates.C, EmployeeInfo.COMPANYNAME_E);
         employeeC.assignDepartment(Employee.depart_titles.BUSINESS);
@@ -69,20 +68,20 @@ public class FortuneEmployee {
         System.out.println();
 
         // ADD SQL TO LOAD THESE EMPLOYEES AND RETRIEVE DATA
-        connectToSqlDB.insertDataFromStringToSqlTable("COMPANY","employee_name","performance", (EmployeeInfo) employeeA);
-        List<String> letters  = connectToSqlDB.readDataBase("COMPANY","employee_name");
+        connectToSqlDB.insertDataFromStringToSqlTable("COMPANY", "employee_name", "performance", "company_name", "salary", "department", (EmployeeInfo) employeeA);
+        List<String> letters = connectToSqlDB.readDataBase("COMPANY", "employee_name");
         System.out.println(letters);
 
-        connectToSqlDB.insertEMPLOYEEProfileToSqlTable("COMPANY","employee_name","performance", (EmployeeInfo) employeeB);
-        List<String> letters2  = connectToSqlDB.readDataBase("COMPANY","employee_name");
+        connectToSqlDB.insertEMPLOYEEProfileToSqlTable("COMPANY", "employee_name", "performance", "company_name", "salary", "department", (EmployeeInfo) employeeB);
+        List<String> letters2 = connectToSqlDB.readDataBase("COMPANY", "employee_name");
         System.out.println(letters2);
 
-        connectToSqlDB.insertEMPLOYEEProfileToSqlTable("COMPANY","employee_name","performance", (EmployeeInfo) employeeC);
-        List<String> letters3  = connectToSqlDB.readDataBase("COMPANY","employee_name");
+        connectToSqlDB.insertEMPLOYEEProfileToSqlTable("COMPANY", "employee_name", "performance", "company_name", "salary", "department", (EmployeeInfo) employeeC);
+        List<String> letters3 = connectToSqlDB.readDataBase("COMPANY", "employee_name");
         System.out.println(letters3);
 
-        connectToSqlDB.insertEMPLOYEEProfileToSqlTable("COMPANY","employee_name","performance", (EmployeeInfo) employeeD);
-        List<String> letters4  = connectToSqlDB.readDataBase("COMPANY","employee_name");
+        connectToSqlDB.insertEMPLOYEEProfileToSqlTable("COMPANY", "employee_name", "performance", "company_name", "salary", "department", (EmployeeInfo) employeeD);
+        List<String> letters4 = connectToSqlDB.readDataBase("COMPANY", "employee_name");
         System.out.println(letters4);
 
     }

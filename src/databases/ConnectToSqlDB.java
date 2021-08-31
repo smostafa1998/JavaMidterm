@@ -23,7 +23,7 @@ public class ConnectToSqlDB {
 
 
     public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
-         List<User> list = readUserProfileFromSqlTable();
+        List<User> list = readUserProfileFromSqlTable();
         for (User user : list) {
             System.out.println(user.getStName() + " " + user.getStID() + " " + user.getStDOB());
         }
@@ -42,6 +42,7 @@ public class ConnectToSqlDB {
     /**
      * This connects to the SQL DATABASE by loading properties and entering info about the database, use this to
      * start the connection to the database
+     *
      * @return
      * @throws IOException
      * @throws SQLException
@@ -55,11 +56,11 @@ public class ConnectToSqlDB {
         String password = prop.getProperty("MYSQLJDBC.password");
         Class.forName(driverClass);
 
-        try{
+        try {
             connect = DriverManager.getConnection(url, userName, password);
             System.out.println("Database is connected");
 
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println("COULD NOT CONNECT TO DB");
             e.printStackTrace();
         }
@@ -68,9 +69,10 @@ public class ConnectToSqlDB {
 
     /**
      * This reads the data from the SQL table, use this for User CLass ONLY USER CLASS
+     *
      * @return
      */
-    public static List<User> readUserProfileFromSqlTable(){
+    public static List<User> readUserProfileFromSqlTable() {
         List<User> list = new ArrayList<>();
         User user = null;
         try {
@@ -100,6 +102,7 @@ public class ConnectToSqlDB {
 
     /**
      * This lets u read from the data base since it executes query
+     *
      * @param tableName
      * @param columnName
      * @return
@@ -150,6 +153,7 @@ public class ConnectToSqlDB {
     /**
      * lets u load arrays into mySQL table, but table needs to be created.
      * THIS IS FOR ALGORITHM FILES
+     *
      * @param ArrayData
      * @param tableName
      * @param columnName
@@ -193,8 +197,8 @@ public class ConnectToSqlDB {
     }
 
 
-    public void insertDataFromLinkedListToSqlTable(LinkedList<String> ArrayData,String tableName,String columnName){
-        try{
+    public void insertDataFromLinkedListToSqlTable(LinkedList<String> ArrayData, String tableName, String columnName) {
+        try {
             connectToSqlDatabase();
             ps = connect.prepareStatement("DROP TABLE IF EXISTS `" + tableName + "`;");
             ps.executeUpdate();
@@ -203,33 +207,43 @@ public class ConnectToSqlDB {
             ps.executeUpdate();
             for (int n = 0; n < ArrayData.size(); n++) {
                 ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName + " ) VALUES(?)");
-                ps.setString(1,ArrayData.get(n));
+                ps.setString(1, ArrayData.get(n));
                 ps.executeUpdate();
             }
 
-            }catch (IOException | SQLException | ClassNotFoundException e) {
+        } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     /**
      * LETS U ADD STRING DATA TO A COLUMN
+     *
      * @param
      * @param tableName
      * @param
      */
-    public void insertDataFromStringToSqlTable(String tableName, String columnName1, String columnName2, EmployeeInfo employee) {
+    public void insertDataFromStringToSqlTable(String tableName, String columnName1, String columnName2, String columnName3, String columnName4, String columnName5, EmployeeInfo employee) {
         try {
             connectToSqlDatabase();
             ps = connect.prepareStatement("DROP TABLE IF EXISTS `" + tableName + "`;");
             ps.executeUpdate();
             ps = connect.prepareStatement(
-                    "CREATE TABLE " + tableName + " (`ID` int NOT NULL AUTO_INCREMENT,`employee_name` varchar(255) DEFAULT NULL,`performance` varchar(255) DEFAULT NULL,  PRIMARY KEY (`ID`) );");
+                    "CREATE TABLE " + tableName + " (`ID` int NOT NULL AUTO_INCREMENT," +
+                            "`employee_name` varchar(255) DEFAULT NULL," +
+                            "`performance` varchar(255) DEFAULT NULL, " +
+                            "`company_name` varchar(255) DEFAULT NULL," +
+                            "`salary` DOUBLE PRECISION DEFAULT NULL," +
+                            "`department` varchar(255) DEFAULT NULL, " +
+                            "PRIMARY KEY (`ID`) );");
             ps.executeUpdate();
             ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName1
-                    + "," + columnName2 +" ) VALUES(?,?)");
+                    + "," + columnName2 + "," + columnName3 + "," + columnName4 + "," + columnName5 + " ) VALUES(?,?,?,?,?)");
             ps.setString(1, employee.employeeName());
             ps.setString(2, employee.performance());
+            ps.setString(3, EmployeeInfo.getCompanyName());
+            ps.setDouble(4, employee.calculateSalary());
+            ps.setString(5, employee.department());
             ps.executeUpdate();
         } catch (IOException | SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -238,6 +252,7 @@ public class ConnectToSqlDB {
 
     /**
      * LETS U EXECEUTE A QUERY FROM JAVA
+     *
      * @param passQuery
      * @param dataColumn
      * @return
@@ -261,6 +276,7 @@ public class ConnectToSqlDB {
 
     /**
      * THis inserts into three columns used to load in students
+     *
      * @param tableName
      * @param columnName1
      * @param columnName2
@@ -270,7 +286,7 @@ public class ConnectToSqlDB {
         try {
             connectToSqlDatabase();
             ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName1
-                    + "," + columnName2 + "," + columnName3 +" ) VALUES(?,?,?)");
+                    + "," + columnName2 + "," + columnName3 + " ) VALUES(?,?,?)");
             ps.setString(1, user.getStID());
             ps.setString(2, user.getStName());
             ps.setString(3, user.getStDOB());
@@ -284,13 +300,16 @@ public class ConnectToSqlDB {
         }
     }
 
-    public void insertEMPLOYEEProfileToSqlTable(String tableName, String columnName1, String columnName2, EmployeeInfo employee) {
+    public void insertEMPLOYEEProfileToSqlTable(String tableName, String columnName1, String columnName2, String columnName3, String columnName4, String columnName5, EmployeeInfo employee) {
         try {
             connectToSqlDatabase();
             ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName1
-                    + "," + columnName2 +" ) VALUES(?,?)");
+                    + "," + columnName2 + "," + columnName3 + "," + columnName4 + "," + columnName5 + " ) VALUES(?,?,?,?,?)");
             ps.setString(1, employee.employeeName());
             ps.setString(2, employee.performance());
+            ps.setString(3, EmployeeInfo.getCompanyName());
+            ps.setDouble(4, employee.calculateSalary());
+            ps.setString(5, employee.department());
             ps.executeUpdate();
             System.out.println("DONE");
 
@@ -318,13 +337,15 @@ public class ConnectToSqlDB {
             e.printStackTrace();
         }
     }
+
     /**
      * inserts array list into SQL this is for parser.students!!!
+     *
      * @param list
      * @param tableName
      * @param columnName
      */
-    public void insertDataFromMapStudentToSqlTable(Map<String, List<Student>> list, String tableName, String columnName, String columnName2, String columnName3,String columnName4) {
+    public void insertDataFromMapStudentToSqlTable(Map<String, List<Student>> list, String tableName, String columnName, String columnName2, String columnName3, String columnName4) {
         try {
             connectToSqlDatabase();
             ps = connect.prepareStatement("DROP TABLE IF EXISTS `" + tableName + "`;");
@@ -334,7 +355,7 @@ public class ConnectToSqlDB {
             ps.executeUpdate();
             for (Map.Entry<String, List<Student>> st : list.entrySet()) {
                 ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName
-                        + "," + columnName2 + "," + columnName3 + "," + columnName4 +" ) VALUES(?,?,?,?)");
+                        + "," + columnName2 + "," + columnName3 + "," + columnName4 + " ) VALUES(?,?,?,?)");
                 ps.setString(1, String.valueOf(st.getKey()));
                 ps.setString(2, String.valueOf(st.getValue().get(0).getFirstName()));
                 ps.setString(3, String.valueOf(st.getValue().get(0).getLastName()));
@@ -356,7 +377,7 @@ public class ConnectToSqlDB {
                     "CREATE TABLE `" + tableName + "` (`ID` varchar(255) UNIQUE ,`map_words` varchar(255) DEFAULT NULL,  PRIMARY KEY (`ID`) );");
             ps.executeUpdate();
 
-            for(Map.Entry <String, List<String>> st : list.entrySet()){
+            for (Map.Entry<String, List<String>> st : list.entrySet()) {
                 ps = connect.prepareStatement("INSERT INTO " + tableName + " ( " + columnName
                         + "," + columnName2 + " ) VALUES(?,?)");
                 ps.setString(1, String.valueOf(st.getKey()));
@@ -387,9 +408,6 @@ public class ConnectToSqlDB {
             e.printStackTrace();
         }
     }
-
-
-
 
 
 }
