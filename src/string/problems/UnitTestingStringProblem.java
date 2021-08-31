@@ -1,5 +1,8 @@
 package string.problems;
 
+import math.problems.Factorial;
+import org.testng.Assert;
+
 public class UnitTestingStringProblem {
 
     public static void main(String[] args) {
@@ -12,7 +15,16 @@ public class UnitTestingStringProblem {
         System.out.println("ANAGRAM");
         String testing1 = "CAT";
         String testing2 = "ACT";
-        Anagram.anagram(testing1, testing2);
+        System.out.println(Anagram.anagram(testing1, testing2));
+
+        //ASSERT
+        String actualResult = Anagram.anagram(testing1, testing2);
+        String expectedResult = "THIS IS A ANAGRAM";
+        try {
+            Assert.assertEquals(actualResult, expectedResult, "NOPE TRY AGAIN");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
         System.out.println();
 
         System.out.println("DETERMINE LARGEST WORD");
@@ -27,7 +39,15 @@ public class UnitTestingStringProblem {
 
         System.out.println("PALINDROME");
         String testing = "MADAM";
-        Palindrome.palindrome(testing);
+        System.out.println(Palindrome.palindrome(testing));
+        //ASSERT
+        actualResult = Palindrome.palindrome(testing);
+        expectedResult = "IT IS A PALINDROME";
+        try {
+            Assert.assertEquals(actualResult, expectedResult, "NOPE TRY AGAIN");
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
         System.out.println();
 
         System.out.println("PERMUTATION");

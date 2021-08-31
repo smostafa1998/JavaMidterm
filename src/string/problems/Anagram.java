@@ -11,12 +11,13 @@ public class Anagram {
     public static void main(String[] args) {
         String testing1 = "MARY";
         String testing2 = "ARMY";
-        anagram(testing1, testing2);
+        System.out.println(anagram(testing1, testing2));
     }
 
 
-    public static void anagram(String testing1, String testing2){
+    public static String anagram(String testing1, String testing2){
         int count = 0;
+        String answer = null;
 
         if (testing1.length() == testing2.length()) {
             for (int i = 0; i < testing1.length(); i++) {
@@ -29,14 +30,15 @@ public class Anagram {
                 }
             }
         } else {
-            System.out.println("TWO STRINGS MUST BE SAME LENGTH");
+            answer = "TWO STRINGS MUST BE SAME LENGTH";
         }
 
 
         if (count == testing1.length()) {
-            System.out.println("THIS IS A ANAGRAM");
+            answer="THIS IS A ANAGRAM";
         } else {
-            System.out.println("THIS IS NOT A ANAGRAM");
+            answer="THIS IS NOT A ANAGRAM";
         }
+        return answer;
     }
 }

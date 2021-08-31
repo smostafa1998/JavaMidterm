@@ -11,21 +11,23 @@ public class Palindrome {
          */
 
         String testing = "MADAM";
-        palindrome(testing);
+        System.out.println(palindrome(testing));
 
     }
 
-    public static void palindrome (String testing){
+    public static String palindrome (String testing){
         String testing1="";
+        String answer = "";
         for (int i=testing.length()-1;i>=0;i--){
             testing1 += testing.charAt(i);
         }
 
         if (testing.equals(testing1)){
-            System.out.println("IT IS A PALINDROME");
+            answer="IT IS A PALINDROME";
         }else{
-            System.out.println("IT IS NOT A PALINDROME");
+            answer = "IT IS NOT A PALINDROME";
         }
 
+        return answer;
     }
 }
