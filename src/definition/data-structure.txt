@@ -74,17 +74,51 @@ Linear data structure is arrays, stack, queue, linked list
 Non linear data structure is graphs and trees
 
 Outline different sorting algorithms and their time complexities:
-                BEST           AVERAGE          WORST
-Quick Sort    *	Ω(n log(n)) * Θ(n log(n))    * O(n^2)
-Bubble Sort	  * Ω(n)	    * Θ(n^2)         * O(n^2)
-Merge Sort	  * Ω(n log(n))	* Θ(n log(n))    * O(n log(n))
-Insertion Sort*	Ω(n)	    * Θ(n^2)         * O(n^2)
-Selection Sort*	Ω(n^2)	    * Θ(n^2)         * O(n^2)
-Heap Sort     *	Ω(n log(n))	* Θ(n log(n))    * O(n log(n))
-Radix Sort    * Ω(nk)	    * Θ(nk)          * O(nk)
-Bucket Sort	  * Ω(n+k)	    * Θ(n+k)         * O(n^2)
-Shell Sort    *	Ω(n log(n))	* Θ(n(log(n))^2) * O(n(log(n))^2)
 
+Quick Sort
+* BEST: Ω(n log(n))
+* AVERAGE: Θ(n log(n))
+* WORST: O(n^2)
+
+Bubble Sort
+* BEST: Ω(n)
+* AVERAGE: Θ(n^2)
+* WORST: O(n^2)
+
+Merge Sort
+* BEST: Ω(n log(n))
+* AVERAGE: Θ(n log(n))
+* WORST: O(n log(n))
+
+Insertion Sort
+* BEST: Ω(n)
+* AVERAGE: Θ(n^2)
+* WORST: O(n^2)
+
+Selection Sort
+*BEST: Ω(n^2)
+*AVERAGE: Θ(n^2)
+*WORST: O(n^2)
+
+Heap Sort
+*BEST: Ω(n log(n))
+*AVERAGE: Θ(n log(n))
+*WORST: O(n log(n))
+
+Radix Sort
+* BEST: Ω(nk)
+* AVERAGE: Θ(nk)
+* WORST: O(nk)
+
+Bucket Sort
+* BEST: Ω(n+k)
+* AVERAGE: Θ(n+k)
+* WORST: O(n^2)
+
+Shell Sort
+* BEST:	Ω(n log(n))
+* AVERAGE: Θ(n(log(n))^2)
+* WORST: O(n(log(n))^2)
 
 Draw a table with time complexity in which it will summarize all the data structure feature's advantages and disadvantages.
   a) In terms of Accessing elements:
