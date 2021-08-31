@@ -1,85 +1,103 @@
 ***ANSWER ALL QUESTIONS BELOW***
 
 Why do we need data structure?
-Answer:
+Answer: its efficient and its reusable. Its also better to store data, and debating on the data structure its got its own methods.
+
 
 What are the various operations that can be performed on different data structures?
-Answer:
+Answer: The various operations that can be -performed on different data structures is that u can add elements, u can remove elements, u can find the size of the current data structure and u can sort the data structure.
 
 When would we use data structures in the real world?
-Answer:
+Answer: Many real word applications use data structures, like u can make a railroad system out of a linked list, u wait in a queue to get tickets, when u have a stack of books u grab the book at the top.
 
 What is an Array?
-Answer:
+Answer: An array is a data structure that holds a fixed amount of values fo a single type, the size cant be altered once its delecared and, every element in a array can be acessessed by its index.
 
 What is the difference between Array and ArrayList?
-Answer:
+Answer: Array is one of the basic data structures that Java has and to access elements u use the [], however with arraylist this is a part of the collections framamwork and it has its own methods to add, remove, access elements. The size of the arraylist can change time over time but not a array.
 
 What is a LinkedList?
-Answer:
+Answer: A linked list consists of a node of the data  and a pointer to the next node, since the nodes are not next to each other, its why there is a pointer but that would mean in order to find a element u would have to go through the list. There is a head ie the first node and a tail ie the last node. This is another collection framework that has its own methods like add, addfirst, remove, remove first
 
 How is an Array different from LinkedList?
-Answer:
+Answer: Array is different from this, because array is a fixed size so you cant add anymore elements once it reached its fixes size unlike linked list u can add as many more nodes. Also array elements can easily be assessed by index number whereas to find a particular node u would have to traverse through the linked list.
 
 What is a Queue?
-Answer:
+Answer: A Queue is another data structure with a FIRO implementation, first in first out meaning that the data that enters in the execution first will be the first data to be able to leave. So the elements are added in the ending of this queue, while elements are removed at the begining
 
 What is a Stack (not Java memory - refers to data structure)?
-Answer:
+Answer: Stack is a another data structure with a LIFO implementation, Last in First  out meaning that the more recent element that was just pushed in the stack will be the first data to be popped out. This is known as push and pop and there is peek where u can look at the most recent element added
 
 What is FIFO and LIFO?
-Answer:
+Answer: FIFO is first element in, first element out ie queue
+LIFO is last element in, first element out ie stack
 
 Explain Big O Notation?
-Answer:
+Answer: Big O Notation basically looks at how efficient the data structure or sorting algorithm is when performing a certain function. Big O notation is calculated by looking  at time or memory that is needed to perform through a bunch of data.
 
 What is the best case to search an element from an array?
-Answer:
+Answer: O(n) u would have to go through a array to find element, unless if u can see the whole array and its elements than O(1)
 
 What is the worst case to search an element from an array?
-Answer:
+Answer: O(n ) because maybe if u only know the size and u want to find a certain element and u dont know which index it is at , so you would have to loop through the array
 
 Describe what a tree data structure is?
-Answer:
+Answer: its a data structure based on hierarchy and has a collection of nodes, so you will have the root node and then the left sub tree of nodes and the right sub tree of nodes. The nodes contain the data and the “branches” or lines of the node are ways to travel from node to node. This is a very efficient structure for it reduces the amount of searching time by like half i think? Its got the best big o complexity O(log n).
 
 Describe what a graph data structure is?
-Answer:
+Answer: Is a data structure that has data that isstored among many groups of edges ie paths and vertices ie nodes, its all interconnected. Graph data looks like (N,E) pairs and it has this collection of Nodes and Edges.
 
 What is the difference between the HashTable and HashMap?
-Answer:
+Answer: The difference between the two is that, hashmap is non synchronized ie not thread safe, but hashtable is synchronized and can be shared with many threads. Hashmao is known to be very fast while hash table is knwn to be slow.
 
 What are the major data structures used in the following areas : RDBMS, Network data model and Hierarchical data model
-Answer:
+Answer: RDBMS, you would use a Array. Network data mode, you would use Graph. Hierarchical data model u would use a tree.
 
 How do HashMaps work in Java? How do they store values, and when are they useful?
-Answer:
+Answer: So its basically mapping values, there is a entry object that contains the key and the value object. In order to retrieve a object, u can call get and use the key object as a identifier to get ur value object. So every value is stored with a key and in order to retrieve ur value u can just go to its key. Since the keys are unique by nature its recommended to use these keys to store alot of data . And in terms of searching and accessing, because of the key the searching time is reduced by alot.
 
 What is ArrayIndexOutOfBoundsException in java? When does it occur?
-Answer:
+Answer: This exception is when ur trying to reach a index thats past the size of the array, so it happens when u have a array at a size of 7 and try to access array.index[7], this wouldnt work cause the max index is [size-1] ie 6.
 
 What are the different ways of copying an array into another array?
-Answer:
+Answer: One way u can just use variable assignment so just assign the elements of one array to a elements of the new empty array. Another way u can use Arrays.copyof() or even Object.clone() to clone the array.
 
 What is DFS and BFS?
-Answer:
+Answer: DFS is deph first search, implements a stack type of execution so it goes to the bottom of the subtree and it backtracks. Its used to go through the nodes,  trying to find the longest path between two nodes. BFS is breadth first search uses a queue type of execution to find the shortest parth to its destination. These are two popular graph traversal algorithms.
 
 What is Recursion?
-Answer:
+Answer: Recursion is when the method will use its own method to solve the problem, so it calls on itself. Recursive has a base case or like stop case  so like x = 0 or x = 1 and a recursive case (where it calls on itself repeatedly) The benefits to recursion is that that code tends to be shorter than a code with iteration.
 
 What are linear and non-linear data Structures?
 Answer:
-
+Linear data structure is arrays, stack, queue, linked list
+Non linear data structure is graphs and trees
 
 Outline different sorting algorithms and their time complexities:
+                BEST           AVERAGE          WORST
+Quick Sort    *	Ω(n log(n)) * Θ(n log(n))    * O(n^2)
+Bubble Sort	  * Ω(n)	    * Θ(n^2)         * O(n^2)
+Merge Sort	  * Ω(n log(n))	* Θ(n log(n))    * O(n log(n))
+Insertion Sort*	Ω(n)	    * Θ(n^2)         * O(n^2)
+Selection Sort*	Ω(n^2)	    * Θ(n^2)         * O(n^2)
+Heap Sort     *	Ω(n log(n))	* Θ(n log(n))    * O(n log(n))
+Radix Sort    * Ω(nk)	    * Θ(nk)          * O(nk)
+Bucket Sort	  * Ω(n+k)	    * Θ(n+k)         * O(n^2)
+Shell Sort    *	Ω(n log(n))	* Θ(n(log(n))^2) * O(n(log(n))^2)
 
 
 Draw a table with time complexity in which it will summarize all the data structure feature's advantages and disadvantages.
   a) In terms of Accessing elements:
-  b) In terms of Inserting elements:
-  c) In terms of Searching elements:
+  b) In terms of Searching elements:
+  c) In terms of Inserting elements:
   d) In terms of Removing elements:
 
-  array
-  linked list
- queue
- Stack
+                    Average	                                     Worst
+        Access	Search	Insertion	Deletion    *	Access	Search	Insertion	Deletion
+Array	 Θ(1)	 Θ(n)	  Θ(n)	      Θ(n)	    *     O(1)	 O(n)	  O(n)	      O(n)
+Stack    Θ(n)	 Θ(n)	  Θ(1)	      Θ(1)	    *     O(n)	 O(n)	  O(1)	      O(1)
+Queue	 Θ(n)	 Θ(n)	  Θ(1)	      Θ(1)      *	  O(n)	 O(n)	  O(1)	      O(1)
+SLL->    Θ(n)	 Θ(n)	  Θ(1)	      Θ(1)      *	  O(n)	 O(n)	  O(1)	      O(1) SINGLY LINKED LIST
+DLL->    Θ(n)	 Θ(n)	  Θ(1)	      Θ(1)	    *     O(n)	 O(n)	  O(1)	      O(1) DOUBLY LINKED LIST
+HashT->  N/A	 Θ(1)	  Θ(1)	      Θ(1)	    *     N/A	 O(n)	  O(n)	      O(n) HASH TABLE
+BST-> Θ(log(n)) Θ(log(n)) Θ(log(n))  Θ(log(n))	*     O(n)	 O(n)	  O(n)	      O(n) BINARY SEARCH TREE
