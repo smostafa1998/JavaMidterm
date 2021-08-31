@@ -2,6 +2,8 @@ package datastructure;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class CollectionView {
 
@@ -20,6 +22,11 @@ public class CollectionView {
         map.put(6, "Seattle");
         System.out.println(Collections.singletonMap(HashMap.class, map));
 
+        System.out.println("FOR EACH LOOP");
+        for(Map.Entry <Integer,String> entry : map.entrySet()){
+            System.out.println("Key = " + entry.getKey() +
+                    ", Value = " + entry.getValue());
+        }
 
     }
 
