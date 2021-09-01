@@ -87,6 +87,9 @@ public class Sort {
                 // System.out.println(Arrays.toString(list));
             }
         }
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
 
@@ -94,7 +97,11 @@ public class Sort {
     public int[] mergeSort(int[] array) {
         final long startTime = System.currentTimeMillis();
         int[] list = array;
+
         //implement here
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
 
@@ -122,6 +129,9 @@ public class Sort {
             quickSort(list, lo, i);
             quickSort(list, i+2, hi);
         }
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
 
@@ -144,7 +154,9 @@ public class Sort {
             list[j] = temp;
             heapIt(list, j,0);
         }
-
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
 
@@ -168,7 +180,6 @@ public class Sort {
             swapped=list[i];
             list[i] = list[maxNUM];
             list[maxNUM] = swapped;
-
             heapIt(list, size,maxNUM);
         }
 
@@ -187,14 +198,46 @@ public class Sort {
             sorted[i] = new ArrayList<Integer>();
         }
 
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
 
+
+    // doest work
     public int[] shellSort(int[] array) {
         final long startTime = System.currentTimeMillis();
         int[] list = array;
-        //implement here
-        int temp;
+        int n = list.length/2;
+        while(n > 0) {
+
+            int i = (list.length / 2);
+
+            while(i < n) {
+
+                int current = i - (list.length / 2);
+
+                while(current >= 0) {
+
+                    if(list[current] > list[current + n]) {
+                        int temp = list[current];
+
+                        list[current] = list[current + n];
+                        list[current + n] = temp;
+                        current = current-n;
+                    }
+                    else{
+                        break;
+                    }
+                    i++;
+                }
+            }
+            n /= 2;
+        }
+        final long endTime = System.currentTimeMillis();
+        final long executionTime = endTime - startTime;
+        this.executionTime = executionTime;
         return list;
     }
 }

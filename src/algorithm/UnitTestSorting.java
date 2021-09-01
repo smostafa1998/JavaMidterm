@@ -32,7 +32,10 @@ public class UnitTestSorting {
 
         //Verify if the unsorted array is sorted by the selectionSort() method
         try {
-            Assert.assertEquals(sortedArray, unSortedArray, "ARRAY IS NOT SORTED... YET!\n***YOU GOT THIS!***");
+            Assert.assertEquals(sortedArray, sort.selectionSort(unSortedArray), "ARRAY IS NOT SORTED... YET!\n***YOU GOT THIS!***");
+            Assert.assertEquals(sortedArray, sort.insertionSort(unSortedArray), "ARRAY IS NOT SORTED... YET!\n***YOU GOT THIS!***");
+            Assert.assertEquals(sortedArray, sort.bubbleSort(unSortedArray), "ARRAY IS NOT SORTED... YET!\n***YOU GOT THIS!***");
+            Assert.assertEquals(sortedArray, sort.quickSort(unSortedArray,0,unSortedArray.length-1), "ARRAY IS NOT SORTED... YET!\n***YOU GOT THIS!***");
         } catch (Exception ex) {
             ex.getMessage();
         }

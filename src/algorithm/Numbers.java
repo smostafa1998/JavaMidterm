@@ -125,7 +125,7 @@ public class Numbers {
 
         connectToSqlDB.insertDataFromArrayToSqlTable(num, "shell_sort", "SortingNumbers");
         List<String> numbers7 = connectToSqlDB.readDataBase("shell_sort", "SortingNumbers");
-        //printValue(numbers7);
+        printValue(numbers7);
 
         /*
         Can you come to conclusion about which sorting algorithm is most efficient, given the size of the data set?
